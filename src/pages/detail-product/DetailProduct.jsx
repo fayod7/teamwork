@@ -2,6 +2,9 @@ import React, { useLayoutEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
 import stars from "./Group 88.svg"
+import { FaFacebook } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
 
 const DetailProduct = () => {
   const { id } = useParams();
@@ -70,11 +73,37 @@ const DetailProduct = () => {
             <p>SKU : {data?.sku}</p>
             <p>Category : {data?.category}</p>
             <p>Tags : {data?.tags}</p>
-            <p>Share : </p>
+            <p className="flex gap-5 items-center">Share :  <FaFacebook /> <FaLinkedin /> <FaTwitter /></p>
           </div>
         </div>
       </div>
 
+      <div className="flex flex-col border-1 border-[#0000] border-t-gray-500 py-[30px] mt-[50px] items-center gap-[30px]">
+        <div className="flex gap-12">
+          <h2 className="text-[20px] font-medium">Description</h2>
+          <h2 className="text-[20px] font-medium text-gray-400">Additional Information</h2>
+          <h2 className="text-[20px] font-medium text-gray-400">reviews {data?.reviews.length}</h2>
+        </div>
+        <div>
+          <p className="text-gray-400">{data?.description}</p>
+          <h3 className="text-lg text-gray-500 font-bold">Comments:</h3>
+          <div className="flex justify-between">
+          {data?.reviews?.map((review, i) => (
+            <p key={i} className="text-gray-400">
+               {review.reviewerName}: <br /> <span className="text-gray-600">{review.comment}</span> 
+            </p>
+          ))}
+          </div>
+
+        </div>
+        <div className="flex justify-between w-[980px] items-center">
+          {
+              data?.images?.map((item, inx) => (
+                <img className="bg-[#F9F1E7]  rounded-lg" width={300} src={item} key={inx} alt="" />
+              ))
+            }
+        </div>
+      </div>
     </div>
   );
 };
