@@ -1,0 +1,21 @@
+.animation {
+  background-color: #e2e8f0; 
+  background: linear-gradient(to right,
+              #f6f7f8 0%,  
+              #edeef1 20%, 
+              #f6f7f8 40%, 
+              #f6f7f8 100% 
+);
+  background-size: 200% 100%;
+
+  animation: skeletonAnimation 1.5s ease-in-out infinite;
+}
+
+@keyframes skeletonAnimation {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
