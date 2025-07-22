@@ -10,7 +10,7 @@ const Products = ({data}) => {
     console.log(data.products);
     const navigate = useNavigate()
   return (
-    <section className='w-full min-h-screen py-14 bg-[#f0f0f0]'>
+    <section className='w-full py-14 bg-[#f0f0f0]'>
       <div className="container">
         <h2 className='text-center font-bold text-[40px] text-[#3A3A3A] mb-7'>Our Products</h2>
         <div className="grid grid-cols-4 gap-6  max-[1150px]:grid-cols-3 max-[950px]:gap-4 max-[750px]:grid-cols-2 max-[450px]:grid-cols-1">
@@ -40,7 +40,7 @@ const Products = ({data}) => {
                   <h2 className="text-lg font-semibold text-gray-800 line-clamp-1">{title}</h2>
                     <p className="text-sm text-gray-500 line-clamp-2">{description}</p>
                          <div className="flex justify-between items-center mt-2 text-[20px]">
-            <strong className="text-[#7F4DFF] font-bold ">${price}</strong>
+            <strong className="text-black font-bold ">${price}</strong>
             <span className="text-yellow-500 text-sm">
               ⭐ {rating}
             </span>
