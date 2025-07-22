@@ -10,7 +10,7 @@ const Products = ({ data }) => {
   console.log(data.products);
   const navigate = useNavigate();
   return (
-    <section className="w-full min-h-screen py-14 bg-[#f0f0f0]">
+    <section className="w-full py-14 bg-[#f0f0f0]">
       <div className="container">
         <h2 className="text-center font-bold text-[40px] text-[#3A3A3A] mb-7">
           Our Products
