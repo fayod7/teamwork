@@ -10,7 +10,7 @@ const Products = ({ data }) => {
   console.log(data.products);
   const navigate = useNavigate();
   return (
-    <section className="w-full min-h-screen py-14 bg-[#f0f0f0]">
+    <section className="w-full py-14 bg-[#f0f0f0]">
       <div className="container">
         <h2 className="text-center font-bold text-[40px] text-[#3A3A3A] mb-7">
           Our Products
@@ -50,18 +50,14 @@ const Products = ({ data }) => {
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <h2 className="text-lg font-semibold text-gray-800 line-clamp-1">
-                    {title}
-                  </h2>
-                  <p className="text-sm text-gray-500 line-clamp-2">
-                    {description}
-                  </p>
-                  <div className="flex justify-between items-center mt-2 text-[20px]">
-                    <strong className="text-[#7F4DFF] font-bold ">
-                      ${price}
-                    </strong>
-                    <span className="text-yellow-500 text-sm">⭐ {rating}</span>
-                  </div>
+                  <h2 className="text-lg font-semibold text-gray-800 line-clamp-1">{title}</h2>
+                    <p className="text-sm text-gray-500 line-clamp-2">{description}</p>
+                         <div className="flex justify-between items-center mt-2 text-[20px]">
+            <strong className="text-[#7F4DFF] font-bold ">${price}</strong>
+            <span className="text-yellow-500 text-sm">
+              ⭐ {rating}
+            </span>
+          </div>
                 </div>
               </div>
             )
