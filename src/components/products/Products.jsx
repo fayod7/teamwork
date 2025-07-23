@@ -2,8 +2,11 @@ import React from "react";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useGetProducts } from "../../store/useGetProducts";
+
 const Products = ({ data }) => {
   const [like, setLike] = useState(false);
+  const { inc } = useGetProducts();
   const toggleLike = () => {
     setLike((p) => !p);
   };
@@ -17,7 +20,7 @@ const Products = ({ data }) => {
         </h2>
         <div className="grid grid-cols-4 gap-6  max-[1150px]:grid-cols-3 max-[950px]:gap-4 max-[750px]:grid-cols-2 max-[450px]:grid-cols-1">
           {data?.products?.map(
-            ({ id, thumbnail, title, price, rating, description }) => (
+            ({ id, thumbnail, title, price, discountPercentage, brand }) => (
               <div
                 style={{
                   boxShadow: `rgba(14, 63, 126, 0.06) 0px 0px 0px 1px,
@@ -44,7 +47,7 @@ const Products = ({ data }) => {
                   </div>
                   <img
                     onClick={() => navigate(`/product/${id}`)}
-                    className="duration-200 hover:cursor-pointer hover:scale-90 object-contain h-full"
+                    className="duration-200 hover:cursor-pointer hover:scale-110 object-contain h-full"
                     src={thumbnail}
                     alt=""
                   />
@@ -53,21 +56,24 @@ const Products = ({ data }) => {
                   <h2 className="text-lg font-semibold text-gray-800 line-clamp-1">
                     {title}
                   </h2>
-                  <p className="text-sm text-gray-500 line-clamp-2">
-                    {description}
-                  </p>
+                  <p className="text-sm text-gray-500 line-clamp-2">{brand}</p>
                   <div className="flex justify-between items-center mt-2 text-[20px]">
-                    <strong className="text-[#7F4DFF] font-bold ">
+                    <strong className="font-semibold text-[20px] text-[#3A3A3A]">
                       ${price}
                     </strong>
-                    <span className="text-yellow-500 text-sm">⭐ {rating}</span>
+                    <span className="text-[16px] text-[#B0B0B0]">
+                      -{discountPercentage}%
+                    </span>
                   </div>
                 </div>
               </div>
             )
           )}
         </div>
-        <button className="text-[#B88E2F] border border-[#B88E2F] py-3 px-16 block mx-auto mt-5 bg-transparent duration-200 hover:cursor-pointer hover:bg-[#B88E2F] hover:text-white">
+        <button
+          onClick={inc}
+          className="text-[#B88E2F] border border-[#B88E2F] py-3 px-16 block mx-auto mt-5 bg-transparent duration-200 hover:cursor-pointer hover:bg-[#B88E2F] hover:text-white"
+        >
           See more
         </button>
       </div>

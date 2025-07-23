@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -15,16 +16,30 @@ const Footer = () => {
             </div>
             <ul className="flex flex-col gap-[10px] max-[400px]:gap-0">
               <li className="text-[#9F9F9F]">Links</li>
-              <li>Home</li>
-              <li>Shop</li>
-              <li>About</li>
-              <li>Contact</li>
+              <li>
+                <NavLink to="/">Home</NavLink>
+              </li>
+              <li>
+                <NavLink to="*">Shop</NavLink>
+              </li>
+              <li>
+                <NavLink to="*">About</NavLink>
+              </li>
+              <li>
+                <NavLink to="*">Contact</NavLink>
+              </li>
             </ul>
             <ul className="flex flex-col gap-[10px]">
               <li className="text-[#9F9F9F]">Help</li>
-              <li>Payment Options</li>
-              <li>Returns</li>
-              <li>Privacy Policies</li>
+              <li>
+                <NavLink to="*">Payment Options</NavLink>
+              </li>
+              <li>
+                <NavLink to="*">Returns</NavLink>
+              </li>
+              <li>
+                <NavLink to="*">Privacy Policies</NavLink>
+              </li>
             </ul>
           </div>
           <div className="flex flex-col gap-[10px] max-[790px]:mt-[30px]">
@@ -42,8 +57,8 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="container  border-1 border-[#0000] border-t-gray-500 py-[15px]">
-        <b>2023 furino. All rights reverved</b>
+      <div className="container  border-1 border-[#0000] border-t-[#D9D9D9] py-[15px]">
+        <b>2023 furniro. All rights reverved</b>
       </div>
     </footer>
   );
