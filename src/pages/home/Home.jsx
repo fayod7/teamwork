@@ -3,9 +3,10 @@ import HomeType from "../../components/home-type/HomeType";
 import Products from "../../components/products/Products";
 import Skeleton from "../../components/products/Skeleton";
 import { useFetch } from "../../hooks/useFetch";
+import { useGetProducts } from "../../store/useGetProducts";
 const Home = () => {
-  const { data, error, loading } = useFetch("/products", { limit: 8 });
-
+  const { count } = useGetProducts();
+  const { data, error, loading } = useFetch("/products", { limit: count });
   return (
     <div>
       <Hero />
