@@ -63,7 +63,7 @@ const Products = ({ data }) => {
             )
           )}
         </div>
-        <button className="text-[#B88E2F] border border-[#B88E2F] py-3 px-16 block mx-auto mt-5 bg-white duration-200 hover:cursor-pointer hover:bg-[#B88E2F] hover:text-white">
+        <button className="text-[#B88E2F] border border-[#B88E2F] py-3 px-16 block mx-auto mt-5 bg-transparent duration-200 hover:cursor-pointer hover:bg-[#B88E2F] hover:text-white">
           See more
         </button>
       </div>
