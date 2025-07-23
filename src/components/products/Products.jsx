@@ -50,20 +50,24 @@ const Products = ({ data }) => {
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <h2 className="text-lg font-semibold text-gray-800 line-clamp-1">{title}</h2>
-                    <p className="text-sm text-gray-500 line-clamp-2">{description}</p>
-                         <div className="flex justify-between items-center mt-2 text-[20px]">
-            <strong className="text-[#7F4DFF] font-bold ">${price}</strong>
-            <span className="text-yellow-500 text-sm">
-              ⭐ {rating}
-            </span>
-          </div>
+                  <h2 className="text-lg font-semibold text-gray-800 line-clamp-1">
+                    {title}
+                  </h2>
+                  <p className="text-sm text-gray-500 line-clamp-2">
+                    {description}
+                  </p>
+                  <div className="flex justify-between items-center mt-2 text-[20px]">
+                    <strong className="text-[#7F4DFF] font-bold ">
+                      ${price}
+                    </strong>
+                    <span className="text-yellow-500 text-sm">⭐ {rating}</span>
+                  </div>
                 </div>
               </div>
             )
           )}
         </div>
-        <button className="text-[#B88E2F] border border-[#B88E2F] py-3 px-16 block mx-auto mt-5 bg-white duration-200 hover:cursor-pointer hover:bg-[#B88E2F] hover:text-white">
+        <button className="text-[#B88E2F] border border-[#B88E2F] py-3 px-16 block mx-auto mt-5 bg-transparent duration-200 hover:cursor-pointer hover:bg-[#B88E2F] hover:text-white">
           See more
         </button>
       </div>
