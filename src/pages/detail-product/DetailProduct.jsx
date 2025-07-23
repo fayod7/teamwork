@@ -12,7 +12,7 @@ const DetailProduct = () => {
   const [showRotate, setShowRotate] = useState(false);
   const [showName, setShowName] = useState(false);
   const [hideLoader, setHideLoader] = useState(false);
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(0);
   const [size, setSize] = useState("L");
   const [color, setColor] = useState("blue");
 
