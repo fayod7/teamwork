@@ -17,6 +17,17 @@ export const headerList = [
   {
     id: 4,
     link: "Contact",
-    to: "*",
+    to: "/contact",
   },
+  {
+    id: 5,
+    link: "cart",
+    to: "/cart",
+  },
+  {
+    id: 6,
+    link: "Likes",
+    to: "/likes",
+  },
+
 ];

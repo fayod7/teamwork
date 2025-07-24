@@ -5,6 +5,9 @@ import Layout from "./pages/layout/Layout";
 import DetailProduct from "./pages/detail-product/DetailProduct";
 import { useState, useEffect } from "react";
 import LoadingLogo from "../public/logo-for-loading.svg";
+import Cart from "./pages/cart/Cart";
+import Likes from "./pages/likes/Likes";
+import Contact from "./pages/contact/Contact";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -90,6 +93,9 @@ const App = () => {
           <Route index={true} element={<Home />} />
           <Route path="/product/:id" element={<DetailProduct />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/cart" element={<Cart/>} />
+          <Route path="/likes" element={<Likes/>} />
+          <Route path="/contact" element={<Contact/>} />
         </Route>
       </Routes>
     </BrowserRouter>
