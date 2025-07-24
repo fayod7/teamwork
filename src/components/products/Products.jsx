@@ -35,17 +35,27 @@ const Products = ({ data }) => {
                 key={id}
                 className="flex flex-col gap-3  bg-white rounded-xl overflow-hidden py-5 px-4 group relative"
               >
-                      <div  onClick={() => navigate(`/product/${id}`)} className="absolute inset-0 bg-[#333]/50 duration-150 opacity-0 group-hover:opacity-100 flex flex-col z-20 items-center justify-center gap-5">
-                      <div className="flex items-center justify-center">
-                        <button className="text-[#B88E2F] bg-white py-3 px-14 duration-200 hover:bg-[#B88E2F] hover:text-white">Add to cart</button>
-                      </div>
-                    <div className="flex justify-betweeen items-center gap-2">
-
-                       <button className="flex justify-center items-center gap-0.5 text-white"><FaShareAlt /> <span>Share</span></button>
-                       <button className="flex justify-center items-center gap-0.5 text-white"><MdCompareArrows /><span>Compare</span></button>
-                       <button className="flex justify-center items-center gap-0.5 text-white"><FaRegHeart /> <span>Like</span></button>
-
-                      </div> 
+                <div
+                  onClick={() => navigate(`/product/${id}`)}
+                  className="absolute inset-0 bg-[#333]/50 duration-150 opacity-0 group-hover:opacity-100 flex flex-col z-20 items-center justify-center gap-5"
+                >
+                  <div className="flex items-center justify-center">
+                    <button className="text-[#B88E2F] bg-white cursor-pointer py-3 px-14 duration-200 hover:bg-[#B88E2F] hover:text-white">
+                      Add to cart
+                    </button>
+                  </div>
+                  <div className="flex justify-betweeen items-center gap-5">
+                    <button className="flex justify-center items-center cursor-pointer gap-0.5 text-white">
+                      <FaShareAlt /> <span>Share</span>
+                    </button>
+                    <button className="flex justify-center items-center cursor-pointer gap-0.5 text-white">
+                      <MdCompareArrows />
+                      <span>Compare</span>
+                    </button>
+                    <button className="flex cursor-pointer justify-center items-center gap-0.5 text-white">
+                      <FaRegHeart /> <span>Like</span>
+                    </button>
+                  </div>
                 </div>
                 <div className="overflow-hidden flex justify-center items-center h-48 w-full relative">
                   <img
