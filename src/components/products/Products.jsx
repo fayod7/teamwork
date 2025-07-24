@@ -45,14 +45,14 @@ const Products = ({ data }) => {
                     </button>
                   </div>
                   <div className="flex justify-betweeen items-center gap-5">
-                    <button className="flex justify-center items-center cursor-pointer gap-0.5 text-white">
+                    <button className="flex justify-center items-center gap-0.5 text-white">
                       <FaShareAlt /> <span>Share</span>
                     </button>
-                    <button className="flex justify-center items-center cursor-pointer gap-0.5 text-white">
+                    <button className="flex justify-center items-center gap-0.5 text-white">
                       <MdCompareArrows />
                       <span>Compare</span>
                     </button>
-                    <button className="flex cursor-pointer justify-center items-center gap-0.5 text-white">
+                    <button className="flex justify-center items-center gap-0.5 text-white">
                       <FaRegHeart /> <span>Like</span>
                     </button>
                   </div>
