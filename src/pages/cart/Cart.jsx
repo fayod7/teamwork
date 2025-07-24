@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import Reusable from "../../components/reusable-hero/Reusable";
 
 const Cart = () => {
   return (
-    <div>Cart</div>
-  )
-}
+    <div>
+      <Reusable title="Cart" link="Cart" />
+    </div>
+  );
+};
 
-export default Cart
+export default Cart;
