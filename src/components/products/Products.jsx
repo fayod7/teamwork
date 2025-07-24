@@ -11,6 +11,12 @@ const Products = ({ data }) => {
   const toggleLike = () => {
     setLike((p) => !p);
   };
+function getOriginalPrice(price, discountPercentage) {
+  if (!price || !discountPercentage) return null;
+  const x = 100 - discountPercentage;
+  if (x === 0) return null;
+  return ((price / x) * 100).toFixed(2);
+}
   console.log(data.products);
   const navigate = useNavigate();
   return (
@@ -33,7 +39,7 @@ const Products = ({ data }) => {
               rgba(42, 51, 70, 0.03) 0px 24px 24px -8px`,
                 }}
                 key={id}
-                className="flex flex-col gap-3  bg-white rounded-xl overflow-hidden py-5 px-4 group relative"
+                className="flex flex-col gap-3  bg-white overflow-hidden pt-5 group relative"
               >
                 <div
                   onClick={() => navigate(`/product/${id}`)}
@@ -60,23 +66,29 @@ const Products = ({ data }) => {
                 <div className="overflow-hidden flex justify-center items-center h-48 w-full relative">
                   <img
                     onClick={() => navigate(`/product/${id}`)}
-                    className="duration-200 hover:cursor-pointer object-contain h-full"
+                    className="duration-200 hover:cursor-pointer object-contain h-full relative group"
                     src={thumbnail}
                     alt=""
                   />
+                    <div className="bg-red-400 size-13 rounded-full opacity-100 group-hover:opacity-0 absolute top-1 right-3 flex justify-center items-center">
+                       <span className="text-sm text-white">
+                      -{discountPercentage.toFixed()}%
+                    </span>
+                    </div>
                 </div>
-                <div className="flex flex-col gap-2 mt-4 space-y-1">
-                  <h2 className="text-base font-semibold text-gray-800">
+                <div className="flex flex-col justify-between mt-4 space-y-1 bg-[#F4F5F7] px-4 py-4">
+                  <h2 className="text-base font-semibold text-gray-800 truncate">
                     {title}
                   </h2>
                   <p className="text-sm text-gray-500 ">{brand}</p>
                   <div className="flex justify-between items-center mt-2 text-[20px]">
-                    <strong className="text-lg font-bold text-emerald-600">
+                    <strong className="text-lg font-bold text-[#3a3a3a]">
                       ${price}
                     </strong>
-                    <span className="text-sm text-red-400">
-                      -{discountPercentage}%
-                    </span>
+                    <span className="text-[#B0B0B0] line-through text-base">
+                        {getOriginalPrice(price, discountPercentage) &&
+                          "$" + getOriginalPrice(price, discountPercentage)}
+                      </span>
                   </div>
                 </div>
               </div>
