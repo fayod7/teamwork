@@ -3,7 +3,8 @@ import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGetProducts } from "../../store/useGetProducts";
-
+import { FaShareAlt, FaRegHeart } from "react-icons/fa";
+import { MdCompareArrows } from "react-icons/md";
 const Products = ({ data }) => {
   const [like, setLike] = useState(false);
   const { inc } = useGetProducts();
@@ -32,36 +33,38 @@ const Products = ({ data }) => {
               rgba(42, 51, 70, 0.03) 0px 24px 24px -8px`,
                 }}
                 key={id}
-                className="flex flex-col gap-3 bg-white rounded-lg overflow-hidden py-5 px-4"
+                className="flex flex-col gap-3  bg-white rounded-xl overflow-hidden py-5 px-4 group relative"
               >
+                      <div  onClick={() => navigate(`/product/${id}`)} className="absolute inset-0 bg-[#333]/50 duration-150 opacity-0 group-hover:opacity-100 flex flex-col z-20 items-center justify-center gap-5">
+                      <div className="flex items-center justify-center">
+                        <button className="text-[#B88E2F] bg-white py-3 px-14 duration-200 hover:bg-[#B88E2F] hover:text-white">Add to cart</button>
+                      </div>
+                    <div className="flex justify-betweeen items-center gap-2">
+
+                       <button className="flex justify-center items-center gap-0.5 text-white"><FaShareAlt /> <span>Share</span></button>
+                       <button className="flex justify-center items-center gap-0.5 text-white"><MdCompareArrows /><span>Compare</span></button>
+                       <button className="flex justify-center items-center gap-0.5 text-white"><FaRegHeart /> <span>Like</span></button>
+
+                      </div> 
+                </div>
                 <div className="overflow-hidden flex justify-center items-center h-48 w-full relative">
-                  <div
-                    className="absolute top-2 right-2 bg-white rounded-full p-2 cursor-pointer shadow-md"
-                    onClick={toggleLike}
-                  >
-                    {like ? (
-                      <AiFillHeart className="text-[#8967f0] text-xl" />
-                    ) : (
-                      <AiOutlineHeart className="text-gray-600 text-xl" />
-                    )}
-                  </div>
                   <img
                     onClick={() => navigate(`/product/${id}`)}
-                    className="duration-200 hover:cursor-pointer hover:scale-110 object-contain h-full"
+                    className="duration-200 hover:cursor-pointer object-contain h-full"
                     src={thumbnail}
                     alt=""
                   />
                 </div>
-                <div className="flex flex-col gap-2">
-                  <h2 className="text-lg font-semibold text-gray-800 line-clamp-1">
+                <div className="flex flex-col gap-2 mt-4 space-y-1">
+                  <h2 className="text-base font-semibold text-gray-800">
                     {title}
                   </h2>
-                  <p className="text-sm text-gray-500 line-clamp-2">{brand}</p>
+                  <p className="text-sm text-gray-500 ">{brand}</p>
                   <div className="flex justify-between items-center mt-2 text-[20px]">
-                    <strong className="font-semibold text-[20px] text-[#3A3A3A]">
+                    <strong className="text-lg font-bold text-emerald-600">
                       ${price}
                     </strong>
-                    <span className="text-[16px] text-[#B0B0B0]">
+                    <span className="text-sm text-red-400">
                       -{discountPercentage}%
                     </span>
                   </div>
