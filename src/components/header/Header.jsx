@@ -5,6 +5,8 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/productsBranch/headerlogo.svg";
 import { headerList } from "../../static";
+import { routes } from "../../static/routes";
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
@@ -47,18 +49,13 @@ const Header = () => {
           ))}
         </ul>
         <ul className="flex justify-between items-center gap-[50px] max-[900px]:hidden">
-          <NavLink to="#">
-            <FaRegUser className="size-5" />
-          </NavLink>
-          <NavLink to="#">
-            <MdOutlineSearch className="size-6" />
-          </NavLink>
-          <NavLink to="#">
-            <FaRegHeart className="size-5" />
-          </NavLink>
-          <NavLink to="#">
-            <AiOutlineShoppingCart className="size-6" />
-          </NavLink>
+          {routes?.map(({ id, src, to }) => (
+            <li key={id}>
+              <NavLink to={to} className="text-black  py-2">
+                {src}
+              </NavLink>
+            </li>
+          ))}
         </ul>
         {/* Mobile dropdown menu with animation */}
         <div
@@ -82,18 +79,13 @@ const Header = () => {
               ))}
             </ul>
             <ul className="flex justify-center items-center gap-8 w-full">
-              <NavLink to="#">
-                <FaRegUser className="size-5" />
-              </NavLink>
-              <NavLink to="#">
-                <MdOutlineSearch className="size-6" />
-              </NavLink>
-              <NavLink to="#">
-                <FaRegHeart className="size-5" />
-              </NavLink>
-              <NavLink to="#">
-                <AiOutlineShoppingCart className="size-6" />
-              </NavLink>
+              {routes?.map(({ id, src, to }) => (
+                <li onClick={() => setIsOpen(false)} key={id}>
+                  <NavLink to={to} className="text-black  py-2">
+                    {src}
+                  </NavLink>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
