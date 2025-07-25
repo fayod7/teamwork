@@ -96,7 +96,7 @@ const DetailProduct = () => {
           </div>
 
         </div>
-        <div className="flex justify-between w-[980px] items-center">
+        <div className="flex over overflow-auto justify-between w-[980px] items-center">
           {
               data?.images?.map((item, inx) => (
                 <img className="bg-[#F9F1E7]  rounded-lg" width={300} src={item} key={inx} alt="" />
