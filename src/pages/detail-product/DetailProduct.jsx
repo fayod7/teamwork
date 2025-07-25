@@ -6,16 +6,19 @@ import { FaFacebook } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import LoadingLogo from "../../../public/logo-for-loading.svg";
+import { useCart } from "../../store/useCart";
+import { Toaster, toast } from "sonner";
 
 const DetailProduct = () => {
   const [isloading, setIsLoading] = useState(true);
   const [showRotate, setShowRotate] = useState(false);
   const [showName, setShowName] = useState(false);
   const [hideLoader, setHideLoader] = useState(false);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0); // for images
   const [size, setSize] = useState("L");
   const [color, setColor] = useState("blue");
-
+  const { add, increment, decrement } = useCart();
+  const [quantity, setQuantity] = useState(1);
   useEffect(() => {
     const timer1 = setTimeout(() => setShowRotate(true), 700); // logo fade-in, then rotate
     const timer2 = setTimeout(() => setShowName(true), 1200); // then name appears
@@ -34,8 +37,6 @@ const DetailProduct = () => {
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  console.log(data);
 
   if (error) {
     return <p>somthing went wrong</p>;
@@ -148,17 +149,19 @@ const DetailProduct = () => {
           {/* Product Info */}
           <div className="w-sm min-w-[260px] max-w-[400px] max-[1160px]:w-full max-[1160px]:max-w-full max-[600px]:px-2">
             <h2 className="text-4xl max-[600px]:text-2xl">{data?.title}</h2>
-            <b className="text-gray-400">{data?.discountPercentage}</b>
+            <b className="text-[24px] text-[#9F9F9F] font-medium">
+              Rs. {data?.price}
+            </b>
             <img
               src={stars}
               alt=""
-              className="max-w-[120px] max-[400px]:max-w-[80px]"
+              className="max-w-[120px] max-[400px]:max-w-[80px] mt-[15px]"
             />
-            <p className="max-[600px]:text-sm">{data?.description}</p>
-            <p className="text-gray-400 mt-2">size</p>
+            <p className="max-[600px]:text-sm mt-[18px]">{data?.description}</p>
+            <p className="text-[#9F9F9F] mt-2 text-[14px]">Size</p>
             <div className="flex gap-4 max-[400px]:gap-2">
               <div
-                className={`text-xs rounded-lg p-3 cursor-pointer ${
+                className={`text-xs rounded-lg p-3 cursor-pointer mt-1 ${
                   size === "L" ? "bg-[#B88E2F] text-white" : "bg-[#F9F1E7]"
                 }`}
                 onClick={() => setSize("L")}
@@ -182,8 +185,8 @@ const DetailProduct = () => {
                 XS
               </div>
             </div>
-            <p className="text-gray-400 mt-2">color</p>
-            <div className="flex gap-4 max-[400px]:gap-2">
+            <p className="text-[#9F9F9F] text-[14px] mt-[18px]">Color</p>
+            <div className="flex gap-4 mt-[12px] max-[400px]:gap-2">
               <div
                 className={`bg-[#816DFA] cursor-pointer rounded-2xl p-4 border-2 ${
                   color === "blue" ? "border-black" : "border-transparent"
@@ -204,23 +207,55 @@ const DetailProduct = () => {
               ></div>
             </div>
             <div className="flex gap-4 mt-4 max-[600px]:flex-col max-[600px]:gap-2">
-              <button className="border text-nowrap py-3 rounded-md border-gray-500 px-8 cursor-pointer max-[600px]:w-full">
-                - 1 +
-              </button>
-              <button className="border text-nowrap py-3 rounded-md border-gray-500 px-8 cursor-pointer max-[600px]:w-full">
-                Add to card
+              <div className="flex items-center border rounded-md border-gray-500 max-[600px]:w-full">
+                <button
+                  className="py-3 px-4 text-xl cursor-pointer"
+                  onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}
+                >
+                  -
+                </button>
+                <span
+                  className="px-8 text-xl select-none"
+                  style={{
+                    minWidth: 35,
+                    textAlign: "center",
+                    display: "inline-block",
+                  }}
+                >
+                  {quantity}
+                </span>
+                <button
+                  className="py-3 px-4 text-xl cursor-pointer"
+                  onClick={() => setQuantity(quantity + 1)}
+                >
+                  +
+                </button>
+              </div>
+              <button
+                className="border text-nowrap py-3 rounded-md border-gray-500 px-8 cursor-pointer max-[600px]:w-full"
+                onClick={() => {
+                  add({ ...data, quantity, size, color });
+                  toast.success("Product added to cart");
+                }}
+              >
+                Add to cart
               </button>
               <button className="border text-nowrap py-3 rounded-md border-gray-500 px-8 cursor-pointer max-[600px]:w-full">
                 + Compare
               </button>
             </div>
-            <hr className="bg-gray-500 text-gray-500 my-4" />
+            <hr className="bg-gray-500 my-4" />
             <div className="max-[600px]:text-sm">
-              <p>SKU : {data?.sku}</p>
-              <p>Category : {data?.category}</p>
-              <p>Tags : {data?.tags}</p>
-              <p className="flex gap-5 items-center flex-wrap">
-                Share : <FaFacebook /> <FaLinkedin /> <FaTwitter />
+              <p className="text-[#9F9F9F] mt-[41px]">SKU : {data?.sku}</p>
+              <p className="text-[#9F9F9F] mt-[12px]">
+                Category : {data?.category}
+              </p>
+              <p className="text-[#9F9F9F] mt-[12px]">Tags : {data?.tags}</p>
+              <p className="flex gap-5 items-center mt-[12px] flex-wrap text-[#9F9F9F]">
+                Share :
+                <span className="flex gap-6">
+                  <FaFacebook /> <FaLinkedin /> <FaTwitter />
+                </span>
               </p>
             </div>
           </div>
@@ -263,6 +298,7 @@ const DetailProduct = () => {
           </div>
         </div>
       </div>
+      <Toaster richColors position="top-center" />
     </>
   );
 };

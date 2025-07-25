@@ -13,7 +13,7 @@ const Reusable = ({ title, link }) => {
         <img src={Logo} alt="logo" className="w-10 h-10 mb-2" />
         <h2 className="text-[48px] font-meduim mb-2">{title}</h2>
         <div className="flex items-center gap-0.5  mt-2">
-          <NavLink to="/" className="text-[16px] font-semibold">
+          <NavLink to="/" className="text-[16px] font-medium">
             Home
           </NavLink>
           <img src={Icon} />
