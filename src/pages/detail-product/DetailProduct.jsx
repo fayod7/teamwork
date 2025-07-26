@@ -6,8 +6,6 @@ import { FaFacebook } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import LoadingLogo from "../../../public/logo-for-loading.svg";
-import { useCart } from "../../store/useCart";
-import { Toaster, toast } from "sonner";
 
 const DetailProduct = () => {
   const [isloading, setIsLoading] = useState(true);
@@ -17,8 +15,7 @@ const DetailProduct = () => {
   const [count, setCount] = useState(0); // for images
   const [size, setSize] = useState("L");
   const [color, setColor] = useState("blue");
-  const { add, increment, decrement } = useCart();
-  const [quantity, setQuantity] = useState(1);
+
   useEffect(() => {
     const timer1 = setTimeout(() => setShowRotate(true), 700); // logo fade-in, then rotate
     const timer2 = setTimeout(() => setShowName(true), 1200); // then name appears
@@ -207,55 +204,23 @@ const DetailProduct = () => {
               ></div>
             </div>
             <div className="flex gap-4 mt-4 max-[600px]:flex-col max-[600px]:gap-2">
-              <div className="flex items-center border rounded-md border-gray-500 max-[600px]:w-full">
-                <button
-                  className="py-3 px-4 text-xl cursor-pointer"
-                  onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}
-                >
-                  -
-                </button>
-                <span
-                  className="px-8 text-xl select-none"
-                  style={{
-                    minWidth: 35,
-                    textAlign: "center",
-                    display: "inline-block",
-                  }}
-                >
-                  {quantity}
-                </span>
-                <button
-                  className="py-3 px-4 text-xl cursor-pointer"
-                  onClick={() => setQuantity(quantity + 1)}
-                >
-                  +
-                </button>
-              </div>
-              <button
-                className="border text-nowrap py-3 rounded-md border-gray-500 px-8 cursor-pointer max-[600px]:w-full"
-                onClick={() => {
-                  add({ ...data, quantity, size, color });
-                  toast.success("Product added to cart");
-                }}
-              >
-                Add to cart
+              <button className="border text-nowrap py-3 rounded-md border-gray-500 px-8 cursor-pointer max-[600px]:w-full">
+                - 1 +
+              </button>
+              <button className="border text-nowrap py-3 rounded-md border-gray-500 px-8 cursor-pointer max-[600px]:w-full">
+                Add to card
               </button>
               <button className="border text-nowrap py-3 rounded-md border-gray-500 px-8 cursor-pointer max-[600px]:w-full">
                 + Compare
               </button>
             </div>
-            <hr className="bg-gray-500 my-4" />
+            <hr className="bg-gray-500 text-gray-500 my-4" />
             <div className="max-[600px]:text-sm">
-              <p className="text-[#9F9F9F] mt-[41px]">SKU : {data?.sku}</p>
-              <p className="text-[#9F9F9F] mt-[12px]">
-                Category : {data?.category}
-              </p>
-              <p className="text-[#9F9F9F] mt-[12px]">Tags : {data?.tags}</p>
-              <p className="flex gap-5 items-center mt-[12px] flex-wrap text-[#9F9F9F]">
-                Share :
-                <span className="flex gap-6">
-                  <FaFacebook /> <FaLinkedin /> <FaTwitter />
-                </span>
+              <p>SKU : {data?.sku}</p>
+              <p>Category : {data?.category}</p>
+              <p>Tags : {data?.tags}</p>
+              <p className="flex gap-5 items-center flex-wrap">
+                Share : <FaFacebook /> <FaLinkedin /> <FaTwitter />
               </p>
             </div>
           </div>
@@ -285,17 +250,14 @@ const DetailProduct = () => {
               ))}
             </div>
           </div>
-          <div className="flex flex-wrap justify-center w-full gap-4 items-center">
-            {data?.images?.map((item, inx) => (
-              <img
-                className="bg-[#F9F1E7] rounded-lg max-w-[90vw] h-auto"
-                width={300}
-                src={item}
-                key={inx}
-                alt=""
-              />
-            ))}
-          </div>
+
+        </div>
+        <div className="flex justify-between w-[980px] items-center">
+          {
+              data?.images?.map((item, inx) => (
+                <img className="bg-[#F9F1E7]  rounded-lg" width={300} src={item} key={inx} alt="" />
+              ))
+            }
         </div>
       </div>
       <Toaster richColors position="top-center" />
