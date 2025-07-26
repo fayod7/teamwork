@@ -54,4 +54,9 @@ export const useCart = create((set) => ({
       return { cart: store };
     });
   },
+    reset: () => {
+    set((state) => {
+      state.cart = []
+    });
+  },
 }));

@@ -8,6 +8,9 @@ import LoadingLogo from "../public/logo-for-loading.svg";
 import Cart from "./pages/cart/Cart";
 import Likes from "./pages/likes/Likes";
 import Contact from "./pages/contact/Contact";
+import Shop from "./pages/shop/Shop";
+import Blog from "./pages/blog/Blog";
+import Checkout from "./pages/checkout/Checkout";
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -96,6 +99,9 @@ const App = () => {
           <Route path="/cart" element={<Cart/>} />
           <Route path="/likes" element={<Likes/>} />
           <Route path="/contact" element={<Contact/>} />
+          <Route path="/shop" element={<Shop/>} />
+          <Route path="/blog" element={<Blog/>} />
+          <Route path="/checkout" element={<Checkout/>} />
         </Route>
       </Routes>
     </BrowserRouter>

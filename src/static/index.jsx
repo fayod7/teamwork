@@ -7,12 +7,12 @@ export const headerList = [
   {
     id: 2,
     link: "Shop",
-    to: "*",
+    to: "/shop",
   },
   {
     id: 3,
-    link: "About",
-    to: "*",
+    link: "Blog",
+    to: "/blog",
   },
   {
     id: 4,
