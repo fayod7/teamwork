@@ -6,6 +6,7 @@ import { FaFacebook } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import LoadingLogo from "../../../public/logo-for-loading.svg";
+import { Toaster } from "react-hot-toast";
 
 const DetailProduct = () => {
   const [isloading, setIsLoading] = useState(true);
@@ -15,6 +16,8 @@ const DetailProduct = () => {
   const [count, setCount] = useState(0); // for images
   const [size, setSize] = useState("L");
   const [color, setColor] = useState("blue");
+  const [quantity, setQuantity] = useState(0); 
+
 
   useEffect(() => {
     const timer1 = setTimeout(() => setShowRotate(true), 700); // logo fade-in, then rotate
@@ -204,9 +207,22 @@ const DetailProduct = () => {
               ></div>
             </div>
             <div className="flex gap-4 mt-4 max-[600px]:flex-col max-[600px]:gap-2">
-              <button className="border text-nowrap py-3 rounded-md border-gray-500 px-8 cursor-pointer max-[600px]:w-full">
-                - 1 +
-              </button>
+              <div className="flex items-center border text-nowrap rounded-md border-gray-500 px-1 cursor-pointer max-[600px]:w-full gap-4">
+                <button
+                  className="text-xl py-2 px-[20px]"
+                  onClick={() => setQuantity(q => (q > 0 ? q - 1 : 0))}
+                >
+                  -
+                </button>
+                <span>{quantity}</span>
+                <button
+                  className="text-xl py-2 px-[20px]"
+                  onClick={() => setQuantity(q => q + 1)}
+                >
+                  +
+                </button>
+              </div>
+
               <button className="border text-nowrap py-3 rounded-md border-gray-500 px-8 cursor-pointer max-[600px]:w-full">
                 Add to card
               </button>
@@ -215,12 +231,12 @@ const DetailProduct = () => {
               </button>
             </div>
             <hr className="bg-gray-500 text-gray-500 my-4" />
-            <div className="max-[600px]:text-sm">
-              <p>SKU : {data?.sku}</p>
-              <p>Category : {data?.category}</p>
-              <p>Tags : {data?.tags}</p>
-              <p className="flex gap-5 items-center flex-wrap">
-                Share : <FaFacebook /> <FaLinkedin /> <FaTwitter />
+            <div className="max-[600px]:text-sm w-[350px]">
+              <p className="flex text-gray-500 items-center justify-between">SKU :      <span> {data?.sku}</span></p>
+              <p className="flex text-gray-500 items-center justify-between">Category : <span> {data?.category}</span></p>
+              <p className="flex text-gray-500 items-center justify-between">Tags :     <span> {data?.tags}</span></p>
+              <p className="flex text-gray-500 gap-5 items-center justify-between items-center flex-wrap">
+                Share : <span className="flex items-center gap-2"><FaFacebook /> <FaLinkedin /> <FaTwitter /></span>
               </p>
             </div>
           </div>
