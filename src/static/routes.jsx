@@ -10,7 +10,7 @@ export const routes = [
   },
   {
     id: 7,
-    src: <MdOutlineSearch className="size-5" />,
+    src: <MdOutlineSearch className="size-6" />,
     to: "/search",
   },
 

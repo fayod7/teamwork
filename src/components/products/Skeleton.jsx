@@ -20,7 +20,8 @@ const Skeleton = () => {
              }}
         >
             <div className="overflow-hidden flex justify-center items-center h-48 w-full relative animation rounded-md">
-                <div className="absolute top-2 right-2 bg-gray-300 rounded-full p-3 w-8 h-8"></div>
+                <div className="absolute top-2 right-4 bg-gray-300 rounded-full p-3 w-8 h-8"></div>
+                <div className="absolute bottom-1.5 right-4 bg-gray-300 rounded-full p-3 w-8 h-8"></div>
             </div>
             <div className="h-6 animation rounded-md w-3/4 mt-2"></div>
             <div className="h-4 animation rounded-md w-full mt-1"></div>
