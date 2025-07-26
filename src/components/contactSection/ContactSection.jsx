@@ -38,7 +38,6 @@ const ContactSection = () => {
               </div>
             </div>
       
-            {/* O‘NG TOMON - Form */}
             <div className="space-y-5 w-[500px]">
               <div className="flex flex-col gap-5">
                 <p>Your name</p>
