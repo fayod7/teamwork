@@ -14,7 +14,7 @@ const Home = () => {
       {error && (
         <p className="text-red text-center text-[27px]">something went wrong</p>
       )}
-      {loading ? <Skeleton /> : <Products data={data} />}
+      {loading ? <Skeleton /> : <Products data={data?.products} />}
     </div>
   );
 };
