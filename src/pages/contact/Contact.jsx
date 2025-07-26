@@ -1,12 +1,18 @@
 import React from 'react'
 import Services from '../../components/customer-services/Services'
+import Reusable from '../../components/reusable-hero/Reusable'
+import ContactSection from '../../components/contactSection/ContactSection'
 
 const Contact = () => {
   return (
     <div>
-      <Services/> 
+      <Reusable title="Contact" link="contact"/>
+      <div className="container">
+        <ContactSection/>
+      </div>
+        <Services/>
     </div>
   )
 }
 
-export default Contactgnd
+export default Contact

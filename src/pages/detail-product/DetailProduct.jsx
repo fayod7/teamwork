@@ -7,18 +7,14 @@ import { FaLinkedin } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import LoadingLogo from "../../../public/logo-for-loading.svg";
 
-
-
 const DetailProduct = () => {
   const [isloading, setIsLoading] = useState(true);
   const [showRotate, setShowRotate] = useState(false);
   const [showName, setShowName] = useState(false);
   const [hideLoader, setHideLoader] = useState(false);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0); // for images
   const [size, setSize] = useState("L");
   const [color, setColor] = useState("blue");
-  const [quantity, setQuantity] = useState(0); // <- bu yo‘q edi
-
 
   useEffect(() => {
     const timer1 = setTimeout(() => setShowRotate(true), 700); // logo fade-in, then rotate
@@ -38,8 +34,6 @@ const DetailProduct = () => {
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  console.log(data);
 
   if (error) {
     return <p>somthing went wrong</p>;
@@ -152,17 +146,19 @@ const DetailProduct = () => {
           {/* Product Info */}
           <div className="w-sm min-w-[260px] max-w-[400px] max-[1160px]:w-full max-[1160px]:max-w-full max-[600px]:px-2">
             <h2 className="text-4xl max-[600px]:text-2xl">{data?.title}</h2>
-            <b className="text-gray-400">{data?.discountPercentage}</b>
+            <b className="text-[24px] text-[#9F9F9F] font-medium">
+              Rs. {data?.price}
+            </b>
             <img
               src={stars}
               alt=""
-              className="max-w-[120px] max-[400px]:max-w-[80px]"
+              className="max-w-[120px] max-[400px]:max-w-[80px] mt-[15px]"
             />
-            <p className="max-[600px]:text-sm">{data?.description}</p>
-            <p className="text-gray-400 mt-2">size</p>
+            <p className="max-[600px]:text-sm mt-[18px]">{data?.description}</p>
+            <p className="text-[#9F9F9F] mt-2 text-[14px]">Size</p>
             <div className="flex gap-4 max-[400px]:gap-2">
               <div
-                className={`text-xs rounded-lg p-3 cursor-pointer ${
+                className={`text-xs rounded-lg p-3 cursor-pointer mt-1 ${
                   size === "L" ? "bg-[#B88E2F] text-white" : "bg-[#F9F1E7]"
                 }`}
                 onClick={() => setSize("L")}
@@ -186,8 +182,8 @@ const DetailProduct = () => {
                 XS
               </div>
             </div>
-            <p className="text-gray-400 mt-2">color</p>
-            <div className="flex gap-4 max-[400px]:gap-2">
+            <p className="text-[#9F9F9F] text-[14px] mt-[18px]">Color</p>
+            <div className="flex gap-4 mt-[12px] max-[400px]:gap-2">
               <div
                 className={`bg-[#816DFA] cursor-pointer rounded-2xl p-4 border-2 ${
                   color === "blue" ? "border-black" : "border-transparent"
@@ -208,23 +204,9 @@ const DetailProduct = () => {
               ></div>
             </div>
             <div className="flex gap-4 mt-4 max-[600px]:flex-col max-[600px]:gap-2">
-              <div className="flex items-center border text-nowrap py-3 rounded-md border-gray-500 px-2  cursor-pointer max-[600px]:w-full gap-4">
-  
-              <button
-                className="text-xl px-4"
-                onClick={() => setQuantity(q => (q > 0 ? q - 1 : 0))}
-              >
-                -
+              <button className="border text-nowrap py-3 rounded-md border-gray-500 px-8 cursor-pointer max-[600px]:w-full">
+                - 1 +
               </button>
-              <span>{quantity}</span>
-              <button
-                className="text-xl px-4"
-                onClick={() => setQuantity(q => q + 1)}
-              >
-                +
-              </button>
-            </div>
-
               <button className="border text-nowrap py-3 rounded-md border-gray-500 px-8 cursor-pointer max-[600px]:w-full">
                 Add to card
               </button>
@@ -233,12 +215,12 @@ const DetailProduct = () => {
               </button>
             </div>
             <hr className="bg-gray-500 text-gray-500 my-4" />
-            <div className="max-[600px]:text-sm w-[280px]">
-              <p className="text-gray-500 flex justify-between">SKU : <span>{data?.sku}</span></p>
-              <p className="text-gray-500 flex justify-between">Category : <span>{data?.category}</span></p>
-              <p className="text-gray-500 flex justify-between">Tags : <span>{data?.tags}</span></p>
-              <p className="text-gray-500 flex justify-between gap-5 items-center flex-wrap">
-                Share : <span className="flex items-center gap-4"><FaFacebook /> <FaLinkedin /> <FaTwitter /></span>
+            <div className="max-[600px]:text-sm">
+              <p>SKU : {data?.sku}</p>
+              <p>Category : {data?.category}</p>
+              <p>Tags : {data?.tags}</p>
+              <p className="flex gap-5 items-center flex-wrap">
+                Share : <FaFacebook /> <FaLinkedin /> <FaTwitter />
               </p>
             </div>
           </div>
@@ -278,6 +260,7 @@ const DetailProduct = () => {
             }
         </div>
       </div>
+      <Toaster richColors position="top-center" />
     </>
   );
 };

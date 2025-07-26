@@ -27,7 +27,7 @@ const Footer = () => {
                   <NavLink to="*">About</NavLink>
                 </li>
                 <li>
-                  <NavLink to="*">Contact</NavLink>
+                  <NavLink to="/contact">Contact</NavLink>
                 </li>
               </ul>
               <ul className="flex flex-col gap-[10px]">
@@ -51,7 +51,7 @@ const Footer = () => {
                   type="text"
                   placeholder="Enter Your Email Address"
                 />
-                <button className="border-1 border-[#0000] border-b-gray-500 font-bold cursor-pointer">
+                <button className="border-1 border-[#0000] border-b-gray-500 font-medium cursor-pointer">
                   SUBSCRIBE
                 </button>
               </div>
