@@ -10,7 +10,7 @@ import { routes } from "../../static/routes";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <header className="header w-full sticky top-0 left-0 bg-white z-50">
+    <header className="header w-full sticky top-0 left-0 bg-white z-50 border-slate-100 border-b">
       <nav className="container flex justify-between items-center py-[20px] relative">
         <NavLink to="/">
           <img src={logo} alt="" />
@@ -42,7 +42,7 @@ const Header = () => {
             <NavLink
               key={id}
               to={to}
-              className="text-black font-medium duration-200 hover:cursor-pointer hover:underline"
+              className="text-black font-medium duration-200 hover:cursor-pointer hover:underline header__link"
             >
               {link}
             </NavLink>

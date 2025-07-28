@@ -235,7 +235,7 @@ const DetailProduct = () => {
               <p className="flex text-gray-500 items-center justify-between">SKU :      <span> {data?.sku}</span></p>
               <p className="flex text-gray-500 items-center justify-between">Category : <span> {data?.category}</span></p>
               <p className="flex text-gray-500 items-center justify-between">Tags :     <span> {data?.tags}</span></p>
-              <p className="flex text-gray-500 gap-5 items-center justify-between items-center flex-wrap">
+              <p className="flex text-gray-500 gap-5 items-center justify-between  flex-wrap">
                 Share : <span className="flex items-center gap-2"><FaFacebook /> <FaLinkedin /> <FaTwitter /></span>
               </p>
             </div>
@@ -268,7 +268,7 @@ const DetailProduct = () => {
           </div>
 
         </div>
-        <div className="flex justify-between w-[980px] items-center">
+        <div className="flex justify-center items-center gap-4 max-[970px]:flex-col">
           {
               data?.images?.map((item, inx) => (
                 <img className="bg-[#F9F1E7]  rounded-lg" width={300} src={item} key={inx} alt="" />

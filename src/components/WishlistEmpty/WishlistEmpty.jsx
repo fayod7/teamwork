@@ -1,7 +1,10 @@
 import React from 'react'
-
+import Reusable from "../../components/reusable-hero/Reusable";
 const WishlistEmpty = () => {
   return (
+    <>
+        <Reusable title="Wishlist" link="Wishlist" />
+
     <div className="flex flex-col items-center justify-center min-h-[300px] py-12">
       <div className="text-7xl mb-4">❤️</div>
       <h1 className="text-2xl font-bold text-gray-700 mb-2">
@@ -11,6 +14,7 @@ const WishlistEmpty = () => {
         Looks like you haven&apos;t added anything yet.
       </p>
     </div>
+    </>
   )
 }
 
