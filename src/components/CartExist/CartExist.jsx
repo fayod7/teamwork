@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import Delete from "../../../public/images/delete.svg";
 import { useCart } from "../../store/useCart";
 import { Toaster, toast } from "sonner";
@@ -7,7 +7,7 @@ import { Toaster, toast } from "sonner";
 const CartExist = () => {
   const { cart, remove } = useCart();
   window.scrollTo(0, 0);
-
+  const navigate = useNavigate()
   // Calculate subtotal
   const subtotal = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -86,7 +86,7 @@ const CartExist = () => {
           ))}
         </div>
         {/* Cart Summary */}
-        <div className="max-w-[393px] h-[390px] bg-[#F9F1E7] flex flex-col items-center mx-auto md:mx-0  md:mt-0 md:sticky top-[150px] md:top-8">
+        <div className="max-w-[393px] h-[390px] bg-[#F9F1E7] flex flex-col items-center mx-auto sticky top-[100px] ">
           <h2 className="text-[32px] font-semibold text-center pt-[15px] pb-[61px]">
             Cart Totals
           </h2>
@@ -106,7 +106,7 @@ const CartExist = () => {
               {formatCurrency(total)}
             </span>
           </div>
-          <button className="w-4/5 my-8 py-3 cursor-pointer rounded-lg border border-[#B88E2F] text-[#B88E2F] text-lg font-semibold hover:bg-[#B88E2F] hover:text-white transition">
+          <button onClick={() => navigate("/checkout")} className="w-4/5 my-8 py-3 cursor-pointer rounded-lg border border-[#B88E2F] text-[#B88E2F] text-lg font-semibold hover:bg-[#B88E2F] hover:text-white transition">
             Check Out
           </button>
         </div>

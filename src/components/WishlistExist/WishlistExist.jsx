@@ -5,6 +5,7 @@ import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import { MdShoppingCart } from "react-icons/md";
 import { useCart } from '../../store/useCart';
+import Reusable from "../../components/reusable-hero/Reusable";
 const WishlistExist = () => {
     window.scrollTo(0, 0);
     const navigate = useNavigate()
@@ -18,6 +19,8 @@ const WishlistExist = () => {
   return ((price / x) * 100).toFixed(2);
 }
   return (
+    <>
+    <Reusable title="Wishlist" link="Wishlist" />
               <section className="w-full py-14 bg-[#f0f0f0]">
         <div className="container">
  <div className="grid grid-cols-4 gap-6  max-[1150px]:grid-cols-3 max-[950px]:gap-4 max-[750px]:grid-cols-2 max-[450px]:grid-cols-1">
@@ -83,6 +86,8 @@ className="duration-200 hover:cursor-pointer object-contain h-full relative grou
             </div>
         </div>
     </section>
+    
+    </>
   )
 }
 
