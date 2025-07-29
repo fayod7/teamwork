@@ -86,7 +86,7 @@ const CartExist = () => {
           ))}
         </div>
         {/* Cart Summary */}
-        <div className="max-w-[393px] h-[390px] bg-[#F9F1E7] flex flex-col items-center mx-auto sticky top-[100px] ">
+        <div className="max-w-[393px] h-[390px] bg-[#F9F1E7] flex flex-col items-center mx-auto sticky top-[100px] max-[800px]:static">
           <h2 className="text-[32px] font-semibold text-center pt-[15px] pb-[61px]">
             Cart Totals
           </h2>

@@ -232,10 +232,10 @@ const DetailProduct = () => {
             </div>
             <hr className="bg-gray-500 text-gray-500 my-4" />
             <div className="max-[600px]:text-sm w-[350px]">
-              <p className="flex text-gray-500 items-center justify-between">SKU :      <span> {data?.sku}</span></p>
-              <p className="flex text-gray-500 items-center justify-between">Category : <span> {data?.category}</span></p>
-              <p className="flex text-gray-500 items-center justify-between">Tags :     <span> {data?.tags}</span></p>
-              <p className="flex text-gray-500 gap-5 items-center justify-between  flex-wrap">
+              <p className="flex text-gray-500 items-center gap-2">SKU :      <span> {data?.sku}</span></p>
+              <p className="flex text-gray-500 items-center gap-2">Category : <span> {data?.category}</span></p>
+              <p className="flex text-gray-500 items-center gap-2">Tags :     <span> {data?.tags}</span></p>
+              <p className="flex text-gray-500 items-center flex-wrap gap-2">
                 Share : <span className="flex items-center gap-2"><FaFacebook /> <FaLinkedin /> <FaTwitter /></span>
               </p>
             </div>
