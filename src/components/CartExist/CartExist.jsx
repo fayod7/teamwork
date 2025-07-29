@@ -144,6 +144,8 @@ const CartExist = () => {
         {/* Cart Summary */}
         <div className="max-w-[393px] w-full h-[390px] bg-[#F9F1E7] flex flex-col items-center mx-auto sticky top-[100px] max-[600px]:static max-[600px]:h-auto max-[400px]:px-2 max-[400px]:py-4">
           <h2 className="text-[32px] font-semibold text-center pt-[15px] pb-[61px] max-[400px]:text-xl max-[400px]:pb-4">
+        <div className="max-w-[393px] h-[390px] bg-[#F9F1E7] flex flex-col items-center mx-auto sticky top-[100px] max-[800px]:static">
+          <h2 className="text-[32px] font-semibold text-center pt-[15px] pb-[61px]">
             Cart Totals
           </h2>
           <div className="flex justify-between w-full px-[75px] gap-[62px] max-[600px]:px-4 max-[400px]:gap-2">

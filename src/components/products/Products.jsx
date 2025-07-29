@@ -8,11 +8,7 @@ import { useCart } from "../../store/useCart";
 import { MdShoppingCart } from "react-icons/md";
 const Products = ({ data }) => {
   const {toggleWishlist} = useLikes()
-  // const [like, setLike] = useState(false);
   const { inc } = useGetProducts();
-  // const toggleLike = () => {
-  //   setLike((p) => !p);
-  // };
 function getOriginalPrice(price, discountPercentage) {
   if (!price || !discountPercentage) return null;
   const x = 100 - discountPercentage;
@@ -28,7 +24,7 @@ function getOriginalPrice(price, discountPercentage) {
         <h2 className="text-center font-bold text-[40px] text-[#3A3A3A] mb-7">
           Our Products
         </h2>
-        <div className="grid grid-cols-4 gap-6  max-[1150px]:grid-cols-3 max-[950px]:gap-4 max-[750px]:grid-cols-2 max-[450px]:grid-cols-1">
+        <div className="grid grid-cols-4 gap-6 max-[1150px]:grid-cols-3 max-[950px]:gap-4 max-[750px]:grid-cols-2 max-[450px]:grid-cols-1 overflow-hidden">
           {data?.map(
             (product) => {
                const isWishlisted = wishlist.some(i => i.id === product.id);
@@ -55,19 +51,19 @@ function getOriginalPrice(price, discountPercentage) {
                     src={product.thumbnail}
                     alt=""
                   />
-                    <div className="bg-red-400 size-13 rounded-full opacity-100 group-hover:opacity-0 absolute top-1 left-3 flex justify-center items-center">
+                    <div className="bg-red-400 size-13 rounded-full flex justify-center items-center absolute top-2 left-2 opacity-0 -translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 ease-in-out max-[800px]:opacity-100 max-[800px]:left-6">
                        <span className="text-sm text-white">
                       -{product.discountPercentage.toFixed()}%
                     </span>
-                    </div>
-                        <button onClick={()=> toggleWishlist(product)} className="size-10 absolute top-2 right-4 bg-white rounded-full shadow flex justify-center items-center border border-slate-300 ">
+                    </div> 
+                        <button onClick={()=> toggleWishlist(product)} className="size-10  bg-white rounded-full shadow flex justify-center items-center border border-slate-300 absolute top-2 right-2 opacity-0 translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 ease-in-out max-[800px]:opacity-100 max-[800px]:right-6"> 
                          {isWishlisted ? (
                                   <FaHeart className="text-red-500" />
                                 ) : (
                                   <FaRegHeart className="text-gray-500" />
                                 )}
                     </button>
-                        <button onClick={()=> add(product)} className="size-10 absolute bottom-1.5 right-4 bg-white rounded-full shadow flex justify-center items-center border border-slate-300">
+                        <button onClick={()=> add(product)} className="size-10 bg-white rounded-full shadow flex justify-center items-center border border-slate-300 absolute bottom-2 right-2 opacity-0 translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300 ease-in-out max-[800px]:opacity-100 max-[800px]:right-6">
                            {isCarted ? (
                              <MdShoppingCart  className="size-6"/>
                             ) : (

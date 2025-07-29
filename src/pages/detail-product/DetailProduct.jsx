@@ -238,6 +238,7 @@ const DetailProduct = () => {
               </button>
             </div>
             <hr className="bg-gray-500 text-gray-500 my-4" />
+
             <div className="max-[600px]:text-sm">
               <p className="text-[#9F9F9F] ">
                 SKU :<span> {data?.sku}</span>
@@ -253,6 +254,14 @@ const DetailProduct = () => {
                 <span className="flex items-center gap-2">
                   <FaFacebook /> <FaLinkedin /> <FaTwitter />
                 </span>
+
+            <div className="max-[600px]:text-sm w-[350px]">
+              <p className="flex text-gray-500 items-center gap-2">SKU :      <span> {data?.sku}</span></p>
+              <p className="flex text-gray-500 items-center gap-2">Category : <span> {data?.category}</span></p>
+              <p className="flex text-gray-500 items-center gap-2">Tags :     <span> {data?.tags}</span></p>
+              <p className="flex text-gray-500 items-center flex-wrap gap-2">
+                Share : <span className="flex items-center gap-2"><FaFacebook /> <FaLinkedin /> <FaTwitter /></span>
+
               </p>
             </div>
           </div>
