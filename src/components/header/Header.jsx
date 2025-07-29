@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaRegUser, FaRegHeart } from "react-icons/fa";
 import { MdOutlineSearch } from "react-icons/md";
 import { AiOutlineShoppingCart } from "react-icons/ai";
@@ -9,8 +9,22 @@ import { routes } from "../../static/routes";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 316);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="header w-full sticky top-0 left-0 bg-white z-50 border-slate-100 border-b">
+    <header
+      className={`header w-full sticky top-0 left-0 bg-white z-50 transition-shadow duration-300 ${
+        scrolled ? "shadow-lg" : ""
+      }`}
+    >
       <nav className="container flex justify-between items-center py-[20px] relative">
         <NavLink to="/">
           <img src={logo} alt="" />

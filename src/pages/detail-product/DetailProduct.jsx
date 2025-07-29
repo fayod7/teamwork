@@ -6,7 +6,8 @@ import { FaFacebook } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import LoadingLogo from "../../../public/logo-for-loading.svg";
-import { Toaster } from "react-hot-toast";
+import { Toaster, toast } from "sonner";
+import { useCart } from "../../store/useCart";
 
 const DetailProduct = () => {
   const [isloading, setIsLoading] = useState(true);
@@ -16,8 +17,8 @@ const DetailProduct = () => {
   const [count, setCount] = useState(0); // for images
   const [size, setSize] = useState("L");
   const [color, setColor] = useState("blue");
-  const [quantity, setQuantity] = useState(0); 
-
+  const [quantity, setQuantity] = useState(0);
+  const { add } = useCart();
 
   useEffect(() => {
     const timer1 = setTimeout(() => setShowRotate(true), 700); // logo fade-in, then rotate
@@ -207,23 +208,29 @@ const DetailProduct = () => {
               ></div>
             </div>
             <div className="flex gap-4 mt-4 max-[600px]:flex-col max-[600px]:gap-2">
-              <div className="flex items-center border text-nowrap rounded-md border-gray-500 px-1 cursor-pointer max-[600px]:w-full gap-4">
+              <div className="flex justify-center items-center border text-nowrap rounded-md border-gray-500 px-1 cursor-pointer max-[600px]:w-full gap-4">
                 <button
-                  className="text-xl py-2 px-[20px]"
-                  onClick={() => setQuantity(q => (q > 0 ? q - 1 : 0))}
+                  className="text-xl py-2 px-[20px] cursor-pointer"
+                  onClick={() => setQuantity((q) => (q > 0 ? q - 1 : 0))}
                 >
                   -
                 </button>
                 <span>{quantity}</span>
                 <button
-                  className="text-xl py-2 px-[20px]"
-                  onClick={() => setQuantity(q => q + 1)}
+                  className="text-xl py-2 px-[20px] cursor-pointer"
+                  onClick={() => setQuantity((q) => q + 1)}
                 >
                   +
                 </button>
               </div>
 
-              <button className="border text-nowrap py-3 rounded-md border-gray-500 px-8 cursor-pointer max-[600px]:w-full">
+              <button
+                onClick={() => {
+                  add({ ...data, quantity: quantity });
+                  toast.success("Product added to cart");
+                }}
+                className="border text-nowrap py-3 rounded-md border-gray-500 px-8 cursor-pointer max-[600px]:w-full"
+              >
                 Add to card
               </button>
               <button className="border text-nowrap py-3 rounded-md border-gray-500 px-8 cursor-pointer max-[600px]:w-full">
@@ -231,12 +238,30 @@ const DetailProduct = () => {
               </button>
             </div>
             <hr className="bg-gray-500 text-gray-500 my-4" />
+
+            <div className="max-[600px]:text-sm">
+              <p className="text-[#9F9F9F] ">
+                SKU :<span> {data?.sku}</span>
+              </p>
+              <p className="flex text-[#9F9F9F] gap-[12px]">
+                Category :<span> {data?.category}</span>
+              </p>
+              <p className="flex text-[#9F9F9F] gap-[12px]">
+                Tags :<span> {data?.tags}</span>
+              </p>
+              <p className="flex text-[#9F9F9F] flex-wrap gap-[12px]">
+                Share :{" "}
+                <span className="flex items-center gap-2">
+                  <FaFacebook /> <FaLinkedin /> <FaTwitter />
+                </span>
+
             <div className="max-[600px]:text-sm w-[350px]">
               <p className="flex text-gray-500 items-center gap-2">SKU :      <span> {data?.sku}</span></p>
               <p className="flex text-gray-500 items-center gap-2">Category : <span> {data?.category}</span></p>
               <p className="flex text-gray-500 items-center gap-2">Tags :     <span> {data?.tags}</span></p>
               <p className="flex text-gray-500 items-center flex-wrap gap-2">
                 Share : <span className="flex items-center gap-2"><FaFacebook /> <FaLinkedin /> <FaTwitter /></span>
+
               </p>
             </div>
           </div>
@@ -266,14 +291,17 @@ const DetailProduct = () => {
               ))}
             </div>
           </div>
-
         </div>
         <div className="flex justify-center items-center gap-4 max-[970px]:flex-col">
-          {
-              data?.images?.map((item, inx) => (
-                <img className="bg-[#F9F1E7]  rounded-lg" width={300} src={item} key={inx} alt="" />
-              ))
-            }
+          {data?.images?.map((item, inx) => (
+            <img
+              className="bg-[#F9F1E7]  rounded-lg"
+              width={300}
+              src={item}
+              key={inx}
+              alt=""
+            />
+          ))}
         </div>
       </div>
       <Toaster richColors position="top-center" />
