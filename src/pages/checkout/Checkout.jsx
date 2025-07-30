@@ -148,7 +148,7 @@ const Checkout = () => {
                     </h3>
                       <p>Rs. {
                         cart?.map(item=>(
-                          <span key={item.id}>{(item.price)}</span>
+                          <span key={item.id}>{(item.price).toFixed(2)}</span>
                         ))
                         }</p>
                       <p>Rs. {

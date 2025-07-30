@@ -9,7 +9,7 @@ const Services = (mt, mb) => {
   return (
     <div className={`bg-[#FAF3EA] py-[100px]`}>
       <div className="container">
-        <div className="flex max-[720px]:flex-col max-[720px]:items-center max-[720px]:gap-20 justify-between">
+        <div className="flex max-[720px]:flex-col max-[720px]:items-stretch max-[720px]:justify-center max-[720px]:gap-8 justify-between">
           <div className="flex gap-[10px] items-center">
             <div className="services-img">
               <img src={quality} alt="" />
