@@ -223,8 +223,28 @@ const Checkout = () => {
                     </p>
                   ))}
 
-                  <p>Subtotal</p>
-                  <p>Total</p>
+                    <p>Subtotal</p>
+                    <p>Total</p>
+                  </div>
+                  <div className='flex flex-col gap-[15px]'>
+                    <h3 className='text-[24px] font-medium'>
+                     Rs {cart?.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}
+                    </h3>
+                      <p>Rs. {
+                        cart?.map(item=>(
+                          <span key={item.id}>{(item.price).toFixed(2)}</span>
+                        ))
+                        }</p>
+                      <p>Rs. {
+                        cart?.map(item =>(
+                           <span> {(item.price * item.quantity).toFixed(2)}</span>
+                        ))
+                        }</p>
+                      <h2 className='text-[24px] text-[#B88E2F] font-bold'>Rs. 
+                        {cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}
+                      </h2>
+                  </div>
+
                 </div>
                 <div className="flex flex-col gap-[15px]">
                   <h3 className="text-[24px] font-medium">
